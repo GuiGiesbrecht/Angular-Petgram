@@ -1,14 +1,15 @@
 <h4 class="text-center">Login</h4>
 
-<form class="form mt-4">
+<form class="form mt-4" (ngSubmit)="login()">
   <div class="form-group">
     <label for="loginEmail">Email address</label>
     <input
       type="email"
       class="form-control"
-      id="loginEmail"
       aria-describedby="emailHelp"
       placeholder="Email"
+      [(ngModel)]="email"
+      name="email"
     />
   </div>
   <div class="form-group">
@@ -16,8 +17,9 @@
     <input
       type="password"
       class="form-control"
-      id="loginPassword"
       placeholder="Password"
+      [(ngModel)]="password"
+      name="password"
     />
   </div>
   <button type="submit" class="btn btn-primary btn-block">Submit</button>
