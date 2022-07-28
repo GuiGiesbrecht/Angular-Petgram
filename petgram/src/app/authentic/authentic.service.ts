@@ -10,7 +10,7 @@ export class AuthenticService {
 
   authentic(email: string, password: string): Observable<any> {
     return this.httpClient.post(
-      'http://localhost:3000/api/usuarios/authentic',
+      'http://localhost:3000/user/login',
       { userName: email, password: password }
     );
   }
