@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticService } from 'src/app/authentic/authentic.service';
 
 @Component({
   selector: 'app-login',
@@ -9,21 +10,18 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor() {}
+  constructor(private authenticService: AuthenticService) {}
 
   ngOnInit(): void {}
 
   login() {
-    const user = {
-      email: this.email,
-      password: this.password,
-    };
-
-    console.log(user);
+    this.authenticService.authentic(this.email, this.password).subscribe({
+      next: (data) => {
+        console.log('Autenticado com sucesso', data);
+      },
+      error: (err) => {
+        console.log('Erro de autenticação', err);
+      },
+    });
   }
-}
-
-export interface User {
-  email: string;
-  password: string;
 }

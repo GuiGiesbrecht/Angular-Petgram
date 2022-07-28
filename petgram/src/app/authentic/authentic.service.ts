@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
 export class AuthenticService {
   constructor(private httpClient: HttpClient) {}
 
-  authentic(email: string, senha: string): Observable<any> {
+  authentic(email: string, password: string): Observable<any> {
     return this.httpClient.post(
       'http://localhost:3000/api/usuarios/authentic',
-      { userName: email, password: senha }
+      { userName: email, password: password }
     );
   }
 }
