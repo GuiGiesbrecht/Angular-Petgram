@@ -10,6 +10,8 @@
       class="form-control"
       placeholder="Enter your email"
     />
+    <app-message *ngIf="newUserForm.get('email')?.hasError('required') && newUserForm.get('email')?.touched" message="Email required"></app-message>
+    <app-message *ngIf="newUserForm.get('email')?.hasError('email') && newUserForm.get('email')?.touched" message="Incorrect email format"></app-message>
   </div>
   <div class="form-group">
     <label for="user">User</label>
@@ -20,6 +22,7 @@
       class="form-control"
       placeholder="Enter your user"
     />
+    <app-message *ngIf="newUserForm.get('userName')?.hasError('lowerCase') && newUserForm.get('userName')?.touched" message="User must only contain lowercase characters"></app-message>
   </div>
   <div class="form-group">
     <label for="name">Full Name</label>
@@ -30,6 +33,7 @@
       class="form-control"
       placeholder="Enter your full name"
     />
+    <app-message *ngIf="newUserForm.get('fullName')?.errors && newUserForm.get('fullName')?.touched" message="Incorrect name"></app-message>
   </div>
   <div class="form-group">
     <label for="password">Password</label>
