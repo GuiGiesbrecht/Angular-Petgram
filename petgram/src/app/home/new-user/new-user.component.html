@@ -1,21 +1,45 @@
 <h4 class="text-center">Register and show your pet to the world!</h4>
 
-<form class="form mt-4">
+<form class="form mt-4" [formGroup]="newUserForm" (submit)="registerUser()">
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+    <input
+      type="email"
+      formControlName="email"
+      id="email"
+      class="form-control"
+      placeholder="Enter your email"
+    />
   </div>
   <div class="form-group">
     <label for="user">User</label>
-    <input type="user" class="form-control" id="user" placeholder="Enter your user">
+    <input
+      type="text"
+      formControlName="userName"
+      id="userName"
+      class="form-control"
+      placeholder="Enter your user"
+    />
   </div>
   <div class="form-group">
     <label for="name">Full Name</label>
-    <input type="name" class="form-control" id="name" placeholder="Enter your full name">
+    <input
+      type="text"
+      formControlName="fullName"
+      id="fullName"
+      class="form-control"
+      placeholder="Enter your full name"
+    />
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+    <input
+      type="password"
+      formControlName="password"
+      id="password"
+      class="form-control"
+      placeholder="Enter your password"
+    />
   </div>
   <div class="d-grid mt-2">
     <button type="submit" class="btn btn-primary">Register</button>
@@ -23,4 +47,3 @@
 </form>
 
 <p>Already have an user? <a [routerLink]="['']">Sign in</a></p>
-
