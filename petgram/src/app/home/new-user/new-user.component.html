@@ -3,47 +3,37 @@
 <form class="form mt-4" [formGroup]="newUserForm" (submit)="registerUser()">
   <div class="form-group">
     <label for="email">Email</label>
-    <input
-      type="email"
-      formControlName="email"
-      id="email"
-      class="form-control"
-      placeholder="Enter your email"
-    />
-    <app-message *ngIf="newUserForm.get('email')?.hasError('required') && newUserForm.get('email')?.touched" message="Email required"></app-message>
-    <app-message *ngIf="newUserForm.get('email')?.hasError('email') && newUserForm.get('email')?.touched" message="Incorrect email format"></app-message>
+    <input type="email" formControlName="email" id="email" class="form-control" placeholder="Enter your email" />
+    <app-message *ngIf="newUserForm.get('email')?.hasError('required') && newUserForm.get('email')?.touched"
+      message="Email required"></app-message>
+    <app-message *ngIf="newUserForm.get('email')?.hasError('email') && newUserForm.get('email')?.touched"
+      message="Incorrect email format"></app-message>
   </div>
   <div class="form-group">
     <label for="user">User</label>
-    <input
-      type="text"
-      formControlName="userName"
-      id="userName"
-      class="form-control"
-      placeholder="Enter your user"
-    />
-    <app-message *ngIf="newUserForm.get('userName')?.hasError('lowerCase') && newUserForm.get('userName')?.touched" message="User must only contain lowercase characters"></app-message>
+    <input type="text" formControlName="userName" id="userName" class="form-control" placeholder="Enter your user" />
+    <app-message *ngIf="newUserForm.get('userName')?.hasError('lowerCase') && newUserForm.get('userName')?.touched"
+      message="User must only contain lowercase characters"></app-message>
+    <app-message *ngIf="newUserForm.get('userName')?.hasError('userAlreadyExists')"
+      message="User alredy exists"></app-message>
   </div>
   <div class="form-group">
     <label for="name">Full Name</label>
-    <input
-      type="text"
-      formControlName="fullName"
-      id="fullName"
-      class="form-control"
-      placeholder="Enter your full name"
-    />
-    <app-message *ngIf="newUserForm.get('fullName')?.errors && newUserForm.get('fullName')?.touched" message="Incorrect name"></app-message>
+    <input type="text" formControlName="fullName" id="fullName" class="form-control"
+      placeholder="Enter your full name" />
+    <app-message *ngIf="newUserForm.get('fullName')?.errors && newUserForm.get('fullName')?.touched"
+      message="Incorrect name"></app-message>
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input
-      type="password"
-      formControlName="password"
-      id="password"
-      class="form-control"
-      placeholder="Enter your password"
-    />
+    <input type="password" formControlName="password" id="password" class="form-control"
+      placeholder="Enter your password" />
+    <app-message *ngIf="newUserForm.hasError('passwordEquals')"
+      message="Password and User must be different"></app-message>
+      <app-message *ngIf="newUserForm.get('password')?.hasError('required') && newUserForm.get('password')?.touched"
+      message="Password is required"></app-message>
+      <app-message *ngIf="newUserForm.get('password')?.hasError('minlength') && newUserForm.get('password')?.touched"
+      message="Password must have at least 5 digits"></app-message>
   </div>
   <div class="d-grid mt-2">
     <button type="submit" class="btn btn-primary">Register</button>

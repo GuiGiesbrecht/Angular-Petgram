@@ -12,4 +12,8 @@ export class NewUserService {
   registerNewUser(newUser: NewUser): Observable<any> {
     return this.httpClient.post('http://localhost:3000/user/signup', newUser);
   }
+
+  checkUserName(userName: string): Observable<any> {
+    return this.httpClient.get(`http://localhost:3000/user/exists/${userName}`);
+  }
 }
